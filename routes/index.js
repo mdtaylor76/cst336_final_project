@@ -159,7 +159,7 @@ function initRoutes(app) {
     let username = req.session.username;
     let userid = req.session.userid;
     console.log('Username: ' + username);
-    res.render('history', { active: 'history', 'username': username, 'userid': userid });
+    res.render('history', { active: 'history', 'logged': true, 'username': username, 'userid': userid });
   });
   
   app.get("/api/order", function(req, res){
