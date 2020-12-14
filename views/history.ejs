@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Final Project </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link href="css/styles.css" rel="stylesheet">
+        <script src="js/history.js"></script>
+    </head>
+    <body>
+        <main>
+            <h1> History Page </h1>
+            <label for="history">Orders:</label>
+            <select id="history" name="history">
+                <option value="0"> Select One </option>
+            </select>
+            <br>
+            <button type="submit" class="button button-block" id="order"/>History</button>
+            <br>
+            <table id="orders">
+                <tr><th>Item</th><th>Cost</th></tr>
+            </table>
+            
+            
+
+        </main>
+<%- include('partials/footer.ejs') %>
