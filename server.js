@@ -4,9 +4,9 @@ const session = require('express-session');
 const renderFile = require('ejs').renderFile;
 
 class Server {
-  //_app;
- // _port = process.env.PORT || 8080;
-  //_ip = process.env.IP;
+  _app;
+  _port = process.env.PORT || 8080;
+  _ip = process.env.IP;
 
   constructor() {
     this._app = express();
@@ -27,7 +27,8 @@ class Server {
   }
 
   start() {
-    this._app.listen(process.env._port || 8080, process.env._ip, () => {
+    //this._app.listen(process.env._port || 8080, process.env._ip, () => {
+    this._app.listen(process.env._port, process.env._ip, () => {
       console.log(`server is listening on ${this._port}`);
     });
   }
