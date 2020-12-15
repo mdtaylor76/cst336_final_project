@@ -4,5 +4,29 @@
             This is my account info ... <br>
             This page must be password-protected
             
+            <div id="accountinfo">
+                <form>
+                	<div>
+                		<label for="fname">Last Name:</label>
+                		<input type="text" id="fname" name="fname" value="Jonny Dough" />
+                	</div>
+                	<div>
+                		<label for="lname">First name:</label>
+                		<input type="text" id="lname" name="lname" value="Jonny Dough" />
+                	</div>
+                	<div>
+                		<label for="email">Email:</label>
+                		<input type="email" id="email" name="email" value="jon@email.com" />
+                	</div>
+                	<div>
+                		<label for="password">Password:</label>
+                		<input type="password" id="password" name="password" value="jon@email.com" />
+                	</div>
+                	<div>
+                		<button type="submit">Update Profile</button>
+                	</div>
+                </form> 
+            </div>
+            
         </main>
 <%- include('partials/footer.ejs') %>

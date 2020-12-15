@@ -12,6 +12,10 @@ $(document).ready(function() {
         let data = await response.json();
         
         console.log(data);
+        $('#fname').val(data[0].nameFirst);
+        $('#lname').val(data[0].nameLast);
+        $('#email').val(data[0].userEmail);
+
     /*      
         data.forEach( function(i) {
             console.log(i);
@@ -20,4 +24,24 @@ $(document).ready(function() {
         });
     */
     }
+    
+function FormChanges(form) {
+
+	// get form
+	if (typeof form == "string") form = document.getElementById(form);
+	if (!form || !form.nodeName || form.nodeName.toLowerCase() != "form") return null;
+	
+	// find changed elements
+	var changed = [], n, c;
+	for (var e = 0, el = form.elements.length; e < el; e++) {
+		n = form.elements[e];
+		c = false;
+		
+		// standard values
+		c = (n.value != n.defaultValue);
+
+		if (c) changed.push(n);
+	}
+	return changed;
+}
 }); //document
