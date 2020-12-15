@@ -98,6 +98,18 @@ function initRoutes(app) {
       }); //query
     });
   }
+  
+  function updateUser(username, password, first, last, email) {
+    let sql = 'UPDATE Users set nameFirst = ?, nameLast = ?, userEmail = ? where username = ?';
+    let sqlParams = [first, last, email, username];
+
+    return new Promise(function (resolve, reject) {
+      pool.query(sql, sqlParams, function (err, rows, fields) {
+        if (err) throw err;
+        resolve(rows);
+      }); //query
+    });
+  }
 
   function hashPassword(password) {
     return new Promise(function (resolve, reject) {
@@ -117,7 +129,6 @@ function initRoutes(app) {
   }
 
   app.get('/welcome', isAuthenticated, function (req, res) {
-//  app.get('/welcome', function (req, res) {
     console.log('/myAccount req.session.id: ' + req.session.id);
     let username = req.session.username;
     let userid = req.session.userid;
@@ -127,12 +138,26 @@ function initRoutes(app) {
   });
 
   app.get('/account', isAuthenticated, function (req, res) {
-//  app.get('/welcome', function (req, res) {
     console.log('/account req.session.id: ' + req.session.id);
     let username = req.session.username;
     let userid = req.session.userid;
     console.log('Username: ' + username);
-    //res.render("welcome", );
+
+    res.render('account', { active: 'home', 'logged': true, 'username': username, 'userid': userid });
+  });
+  
+  app.post('/account', async function (req, res) {
+    console.log('/account post req.session.id: ' + req.session.id);
+    let username = req.session.username;
+    let userid = req.session.userid;
+
+    let email = req.body.email;
+    let first = req.body.fname;
+    let last = req.body.lname;
+    let password = req.body.password;
+
+    updateUser(username, password, first, last, email);
+    
     res.render('account', { active: 'home', 'logged': true, 'username': username, 'userid': userid });
   });
 
