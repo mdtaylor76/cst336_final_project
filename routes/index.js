@@ -85,7 +85,7 @@ function initRoutes(app) {
   }
 
   function addUsername(username, password) {
-    let sql = 'INSERT INTO users (username, password) VALUES (?,?)';
+    let sql = 'INSERT INTO Users (username, password) VALUES (?,?)';
     let sqlParams = [username, password];
 
     return new Promise(function (resolve, reject) {

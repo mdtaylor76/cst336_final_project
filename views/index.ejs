@@ -18,10 +18,22 @@
                     <h3 class="error">Wrong Credentials</h3>
                 
                 <% }%>
-                <label> Username</label>
-                <input type="text" id="username" name="username"/>
-                <label> Set A Password</label>
-                <input type="password" id="password" name="password"/>
+                <p>
+                    <label for="username"> Username </label>
+                    <input type="text" id="username" name="username" required/>
+                    <label for"password"> Set A Password</label>
+                    <input type="password" id="password" name="password" required/>
+                </p>
+                <p>
+                    <label for="firstName"> First Name </label>
+                    <input type="text" name="firstName" required/>
+                    <label for "lastName"> Last Name </label>
+                    <input type="text" name="lastName" required/>
+                </p>
+                <p>
+                    <label for "email"> Last Name </label>
+                    <input type="email" name="email" required/>
+                </p>
                 <button type="submit" class="button button-block"/>Create</button>
                 <input type="hidden" name="action" value="create">
             </form>
@@ -35,10 +47,12 @@
                     <h3 class="error">Wrong Credentials</h3>
                 
                 <% }%>
-                <label> Username</label>
-                <input type="text" name="username"/>
-                <label>Password</label>
-                <input type="password" name="password"/>
+                <p>
+                    <label for="username"> Username </label>
+                    <input type="text" name="username"/>
+                    <label for="password"> Password </label>
+                    <input type="password" name="password"/>
+                </p>
                 <button class="button button-block" id="login"/>Login</button>
                 <input type="hidden" name="action" value="login">
             </form>
