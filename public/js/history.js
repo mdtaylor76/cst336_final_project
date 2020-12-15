@@ -38,7 +38,7 @@ $(document).ready(function() {
         $("#orders").append('<tr><th>Item</th><th>Cost</th></tr>');
         
         data.forEach( function(i) {
-           $("#orders").append(`<tr><td>${i.description}</td><td>${i.cost}</td></tr>`)
+           $("#orders").append(`<tr><td>${i.itemDescription}</td><td>${i.itemCost}</td></tr>`)
         });
     });
 
