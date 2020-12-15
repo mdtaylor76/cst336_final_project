@@ -154,7 +154,8 @@ function initRoutes(app) {
     res.render('cart', { active: 'cart' });
   });
   
-  app.get('/history', function (req, res) {
+  //app.get('/history', function (req, res) {
+  app.get('/history', isAuthenticated, function (req, res) {
     console.log('/history req.session.id: ' + req.session.id);
     let username = req.session.username;
     let userid = req.session.userid;
