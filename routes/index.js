@@ -195,6 +195,7 @@ function initRoutes(app) {
       console.log("rows" + rows);
       res.send(rows);
     });
+  });//api/history
   
   app.get("/api/customer", function(req, res){
     let id = req.query.id;
@@ -208,10 +209,7 @@ function initRoutes(app) {
       console.log("rows" + rows);
       res.send(rows);
     });
-
   });//api/history
-
-  
 }
 
 module.exports = initRoutes;
