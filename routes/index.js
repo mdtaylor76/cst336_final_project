@@ -64,7 +64,7 @@ function initRoutes(app) {
           let first = req.body.firstName;
           let last = req.body.lastName;
           let hashedPass = await hashPassword(password);
-          result = await addUsername(username, hashedPass);
+          result = await addUsername(username, hashedPass, first, last, email);
           req.session.authenticated = true;
           req.session.username = username;
           res.redirect('/welcome');
