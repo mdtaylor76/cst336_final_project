@@ -73,7 +73,7 @@ function initRoutes(app) {
   });
 
   function checkUsername(username) {
-    let sql = 'SELECT * FROM users WHERE username = ?';
+    let sql = 'SELECT * FROM Users WHERE username = ?';
     let sqlParams = [username];
 
     return new Promise(function (resolve, reject) {
@@ -164,7 +164,8 @@ function initRoutes(app) {
   
   app.get("/api/order", function(req, res){
     let id = req.query.id;
-    let sql = `select it.description, it.cost from OrderItem oi join Item it on (oi.Item_ID = it.Item_ID) where oi.order_ID = ${id}`;
+    //let sql = `select it.description, it.cost from OrderItem oi join Item it on (oi.Item_ID = it.Item_ID) where oi.order_ID = ${id}`;
+    let sql = `select oi.itemDescription, oi.itemImage, oi.quantity, oi.itemCost from OrderItem oi where oi.orderID = ?; ${id}`;
     
     console.log("Get Order: " + id);
     console.log(sql);
@@ -178,7 +179,7 @@ function initRoutes(app) {
     
   app.get("/api/history", function(req, res){
     let id = req.query.id;
-    let sql = `select order_ID from Orders where Customer_ID = ${id}`;
+    let sql = `select orderID from Orders where userID = ${id}`;
 
     console.log("get history: " + id);
     console.log(sql);
