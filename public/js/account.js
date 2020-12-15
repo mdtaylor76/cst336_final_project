@@ -1,6 +1,8 @@
 /* global $ */
 $(document).ready(function() {
     
+    let change = [];
+    
     getUserData();
 
     async function getUserData() {
@@ -24,6 +26,27 @@ $(document).ready(function() {
         });
     */
     }
+    
+    $('#fname').on("change", function() {
+        change.push("fname"); 
+    });
+    
+    $('#lname').on("change", function() {
+        change.push("lname");
+    });
+    
+    $('#email').on("change", function() {
+        change.push("email");
+    });
+    
+    $('#password').on("change", function() {
+        change.push("password");
+    });
+    
+    $('#test').on("click", function() {
+        console.log(change);
+    });
+    
     
 function FormChanges(form) {
 
