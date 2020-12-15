@@ -126,6 +126,16 @@ function initRoutes(app) {
     res.render('welcome', { active: 'home', 'logged': true, 'username': username, 'userid': userid });
   });
 
+  app.get('/account', isAuthenticated, function (req, res) {
+//  app.get('/welcome', function (req, res) {
+    console.log('/account req.session.id: ' + req.session.id);
+    let username = req.session.username;
+    let userid = req.session.userid;
+    console.log('Username: ' + username);
+    //res.render("welcome", );
+    res.render('account', { active: 'home', 'logged': true, 'username': username, 'userid': userid });
+  });
+
   app.get('/logout', function (req, res) {
     console.log('req.session.id' + req.session.id);
     req.session.destroy();
@@ -144,14 +154,6 @@ function initRoutes(app) {
       next();
     }
   }
-
-  app.get('/store', function (req, res) {
-    res.render('store', { active: 'store' });
-  });
-
-  app.get('/item', function (req, res) {
-    res.render('item', { active: 'item' });
-  });
 
   app.get('/cart', function (req, res) {
     res.render('cart', { active: 'cart' });
@@ -186,6 +188,19 @@ function initRoutes(app) {
     let sql = `select orderID from Orders where userID = ${id}`;
 
     console.log("get history: " + id);
+    console.log(sql);
+    
+    pool.query(sql, function (err, rows, fields) {
+      if (err) throw err;
+      console.log("rows" + rows);
+      res.send(rows);
+    });
+  
+  app.get("/api/customer", function(req, res){
+    let id = req.query.id;
+    let sql = `select * from Users where userID = ${id}`;
+
+    console.log("get user: " + id);
     console.log(sql);
     
     pool.query(sql, function (err, rows, fields) {

@@ -5,14 +5,15 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <link href="css/styles.css" rel="stylesheet">
         <script src="js/functions.js"></script>
+        <script src="js/account.js"></script>
     </head>
     <% if (typeof logged != "undefined" && logged) { %>
         <ul>
         	<li class="nav">
-        		<a class="<%= active === 'user' && 'active' %>" href="/user"> User </a>
+        		<a class="<%= active === 'user' && 'active' %>" href="/user"> Store Search </a>
         	</li>
         	<li class="nav">
-        		<a class="<%= active === 'cart' && 'active' %>" href="/cart"> Cart </a>
+        		<a class="<%= active === 'cart' && 'active' %>" href="/cart"> Shopping Cart </a>
         	</li>
         	<li class="nav">
         		<a class="<%= active === 'history' && 'active' %>" href="/history"> History </a>
