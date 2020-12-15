@@ -17,7 +17,7 @@ $(document).ready(function() {
         data.forEach( function(i) {
             console.log(i);
             console.log(`<option value="${i.orderID}"> ${i.orderID} </option>`);
-            $("#history").append(`<option value="${i.order_ID}"> ${i.orderID} </option>`);
+            $("#history").append(`<option value="${i.orderID}"> ${i.orderID} </option>`);
         });
     }
 

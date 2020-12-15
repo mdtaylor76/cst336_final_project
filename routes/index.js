@@ -165,7 +165,7 @@ function initRoutes(app) {
   app.get("/api/order", function(req, res){
     let id = req.query.id;
     //let sql = `select it.description, it.cost from OrderItem oi join Item it on (oi.Item_ID = it.Item_ID) where oi.order_ID = ${id}`;
-    let sql = `select oi.itemDescription, oi.itemImage, oi.quantity, oi.itemCost from OrderItem oi where oi.orderID = ?; ${id}`;
+    let sql = `select oi.itemDescription, oi.itemImage, oi.quantity, oi.itemCost from OrderItem oi where oi.orderID = ${id}`;
     
     console.log("Get Order: " + id);
     console.log(sql);
