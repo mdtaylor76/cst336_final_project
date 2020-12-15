@@ -8,7 +8,7 @@ $(document).ready(function() {
 
     async function getUserData() {
 
-        //let id = $('#userid').val();
+        let id = $('#userid').val();
         console.log("userid: " + id);
         let url = `/api/customer?id=${id}`;
         let response = await fetch(url);
