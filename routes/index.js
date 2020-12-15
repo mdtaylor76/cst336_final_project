@@ -60,6 +60,9 @@ function initRoutes(app) {
           res.render('index', { active: 'home', 'loginError': true });
         }
         else {
+          let email = req.body.email;
+          let first = req.body.firstName;
+          let last = req.body.lastName;
           let hashedPass = await hashPassword(password);
           result = await addUsername(username, hashedPass);
           req.session.authenticated = true;
@@ -84,9 +87,9 @@ function initRoutes(app) {
     }); //promise
   }
 
-  function addUsername(username, password) {
-    let sql = 'INSERT INTO Users (username, password) VALUES (?,?)';
-    let sqlParams = [username, password];
+  function addUsername(username, password, first, last, email) {
+    let sql = 'INSERT INTO Users (username, password, nameFirst, nameLast, userEmail) VALUES (?,?,?,?,?)';
+    let sqlParams = [username, password, first, last, email];
 
     return new Promise(function (resolve, reject) {
       pool.query(sql, sqlParams, function (err, rows, fields) {
