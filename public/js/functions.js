@@ -1,7 +1,7 @@
 /* global $ */
 $(document).ready(function() {
   
-$('.tab a').on('click', function (e) {
+/*$('.tab a').on('click', function (e) {
   
   e.preventDefault();
   
@@ -14,6 +14,6 @@ $('.tab a').on('click', function (e) {
   
   $(target).fadeIn(600);
   
-});
+}); */
 
 }); //document

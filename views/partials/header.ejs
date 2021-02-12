@@ -9,13 +9,19 @@
     <% if (typeof logged != "undefined" && logged) { %>
         <ul>
         	<li class="nav">
-        		<a class="<%= active === 'user' && 'active' %>" href="/account"> User </a>
+        		<a class="<%= active === 'user' && 'active' %>" href="/account"> Account </a>
         	</li>
         	<li class="nav">
-        		<a class="<%= active === 'cart' && 'active' %>" href="/cart"> Cart </a>
+        		<a class="<%= active === 'cart' && 'active' %>" href="/users"> Users </a>
         	</li>
         	<li class="nav">
-        		<a class="<%= active === 'history' && 'active' %>" href="/history"> History </a>
+        		<a class="<%= active === 'student' && 'active' %>" href="/student"> Students </a>
+        	</li>
+        	<li class="nav">
+        		<a class="<%= active === 'incidents' && 'active' %>" href="/incidents"> Incident </a>
+        	</li>
+        	<li class="nav">
+        		<a class="<%= active === 'reports' && 'active' %>" href="/reports"> Reports </a>
         	</li>
         	<li class="nav">
         		[ <%= username %>: <a class="button" href="/logout"><u>Logout</u></a> ]

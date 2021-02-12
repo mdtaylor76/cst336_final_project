@@ -18,14 +18,6 @@ $(document).ready(function() {
         $('#fname').val(data[0].nameFirst);
         $('#lname').val(data[0].nameLast);
         $('#email').val(data[0].userEmail);
-
-    /*      
-        data.forEach( function(i) {
-            console.log(i);
-            console.log(`<option value="${i.orderID}"> ${i.orderID} </option>`);
-            $("#history").append(`<option value="${i.orderID}"> ${i.orderID} </option>`);
-        });
-    */
     }
     
     $('#fname').on("change", function() {

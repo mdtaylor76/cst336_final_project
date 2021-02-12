@@ -1,14 +1,9 @@
 const initViews = require('./views');
-const initGooglePlaces = require('./googlePlaces');
-const initProductSearch = require('./productSearch');
 const { pool } = require('../data-sources/connections');
-//const pool = require("./dbPool.js");
 const bcrypt = require('bcrypt');
 
 function initRoutes(app) {
   initViews(app);
-  initGooglePlaces(app);
-  initProductSearch(app);
 
   app.get('/', function (req, res) {
     console.log('app.get: ' + req.session.id);
@@ -133,8 +128,39 @@ function initRoutes(app) {
     let username = req.session.username;
     let userid = req.session.userid;
     console.log('Username: ' + username);
-    //res.render("welcome", );
     res.render('welcome', { active: 'home', 'logged': true, 'username': username, 'userid': userid });
+  });
+
+  app.get('/users', isAuthenticated, function (req, res) {
+    console.log('/myAccount req.session.id: ' + req.session.id);
+    let username = req.session.username;
+    let userid = req.session.userid;
+    console.log('Username: ' + username);
+    res.render('users', { active: 'home', 'logged': true, 'username': username, 'userid': userid });
+  });
+
+  app.get('/student', isAuthenticated, function (req, res) {
+    console.log('/myAccount req.session.id: ' + req.session.id);
+    let username = req.session.username;
+    let userid = req.session.userid;
+    console.log('Username: ' + username);
+    res.render('student', { active: 'home', 'logged': true, 'username': username, 'userid': userid });
+  });
+
+  app.get('/incidents', isAuthenticated, function (req, res) {
+    console.log('/myAccount req.session.id: ' + req.session.id);
+    let username = req.session.username;
+    let userid = req.session.userid;
+    console.log('Username: ' + username);
+    res.render('incidents', { active: 'home', 'logged': true, 'username': username, 'userid': userid });
+  });
+  
+  app.get('/reports', isAuthenticated, function (req, res) {
+    console.log('/myAccount req.session.id: ' + req.session.id);
+    let username = req.session.username;
+    let userid = req.session.userid;
+    console.log('Username: ' + username);
+    res.render('reports', { active: 'home', 'logged': true, 'username': username, 'userid': userid });
   });
 
   app.get('/account', isAuthenticated, function (req, res) {
@@ -179,33 +205,13 @@ function initRoutes(app) {
       next();
     }
   }
-
-  app.get('/cart', function (req, res) {
-    res.render('cart', { active: 'cart' });
-  });
   
-  //app.get('/history', function (req, res) {
   app.get('/history', isAuthenticated, function (req, res) {
     console.log('/history req.session.id: ' + req.session.id);
     let username = req.session.username;
     let userid = req.session.userid;
     console.log('Username: ' + username);
     res.render('history', { active: 'history', 'logged': true, 'username': username, 'userid': userid });
-  });
-  
-  app.get("/api/order", function(req, res){
-    let id = req.query.id;
-    //let sql = `select it.description, it.cost from OrderItem oi join Item it on (oi.Item_ID = it.Item_ID) where oi.order_ID = ${id}`;
-    let sql = `select oi.itemDescription, oi.itemImage, oi.quantity, oi.itemCost from OrderItem oi where oi.orderID = ${id}`;
-    
-    console.log("Get Order: " + id);
-    console.log(sql);
-    
-    pool.query(sql, function (err, rows, fields) {
-      if (err) throw err;
-      console.log("rows" + rows);
-      res.send(rows);
-    });
   });
     
   app.get("/api/history", function(req, res){
